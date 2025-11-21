@@ -514,6 +514,10 @@
         
         <div class="music-control" id="musicControl" onclick="toggleMusic()">
             🎵
+            <audio id="bgm" loop preload="auto">
+  <source src="https://github.com/cochyu/xiadie_fansite/blob/main/bgmusic.mp3" type="audio/mpeg">
+  您的浏览器不支持音频。
+</audio>
         </div>
     </div>
 
@@ -730,32 +734,15 @@
         let oscillator;
 
         function toggleMusic() {
-            const musicControl = document.getElementById('musicControl');
-            
-            if (!musicPlaying) {
-                // 创建简单的背景音乐
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.setValueAtTime(220, audioContext.currentTime);
-                oscillator.type = 'sine';
-                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-                
-                oscillator.start();
-                musicPlaying = true;
-                musicControl.classList.add('playing');
-            } else {
-                if (oscillator) {
-                    oscillator.stop();
-                    audioContext.close();
-                }
-                musicPlaying = false;
-                musicControl.classList.remove('playing');
-            }
+          const audio = document.getElementById('bgm');
+          const ctrl = document.getElementById('musicControl');
+          if (audio.paused) {
+            audio.play();
+            ctrl.classList.add('playing');
+          } else {
+            audio.pause();
+            ctrl.classList.remove('playing');
+          }
         }
 
         // 页面切换
@@ -888,7 +875,7 @@
         const quizQuestions = [
             {
                 question: "遐蝶的命途是什么？",
-                options: ["毁灭", "巡猎", "智识", "虚无"],
+                options: ["毁灭", "巡猎", "智识", "记忆"],
                 correct: 3
             },
             {
@@ -1027,4 +1014,5 @@
         };
     </script>
 </body>
+
 </html>
