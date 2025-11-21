@@ -50,17 +50,19 @@
             margin-bottom: 20px;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
             animation: glow 2s ease-in-out infinite alternate;
+            color: #00BFFF; /* 天蓝色 */
         }
 
         @keyframes glow {
-            from { text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 10px rgba(100,149,237,0.5); }
-            to { text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 20px rgba(100,149,237,0.8); }
+            from { text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 10px rgba(0, 191, 255, 0.5); }
+            to { text-shadow: 3px 3px 6px rgba(0,0,0,0.7), 0 0 20px rgba(0, 191, 255, 0.8); }
         }
 
         .subtitle {
             font-size: 1.5em;
             margin-bottom: 50px;
             opacity: 0.9;
+            color: #00BFFF; /* 天蓝色 */
         }
 
         .menu-container {
@@ -145,12 +147,27 @@
         .sub-page {
             display: none;
             min-height: 100vh;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
             padding: 20px;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .sub-page.active {
             display: block;
+        }
+
+        /* 子页面背景图片 */
+        #wallpaperPage {
+            background-image: url('https://raw.githubusercontent.com/cochyu/xiadie_fansite/main/wp_bg.jpg');
+        }
+
+        #forumPage {
+            background-image: url('https://raw.githubusercontent.com/cochyu/xiadie_fansite/main/blog_bg.png');
+        }
+
+        #quizPage {
+            background-image: url('https://raw.githubusercontent.com/cochyu/xiadie_fansite/main/test_bg.jpg');
         }
 
         .header {
@@ -238,12 +255,7 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
-            background: linear-gradient(45deg, #e0e0e0, #f0f0f0);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3em;
-            color: #999;
+            display: block;
         }
 
         .wallpaper-info {
@@ -515,9 +527,9 @@
         <div class="music-control" id="musicControl" onclick="toggleMusic()">
             🎵
             <audio id="bgm" loop preload="auto">
-  <source src="https://raw.githubusercontent.com/cochyu/xiadie_fansite/main/bgmusic.mp3" type="audio/mpeg">
-  您的浏览器不支持音频。
-</audio>
+                <source src="https://raw.githubusercontent.com/cochyu/xiadie_fansite/main/bgmusic.mp3" type="audio/mpeg">
+                您的浏览器不支持音频。
+            </audio>
         </div>
     </div>
 
@@ -541,9 +553,26 @@
         </div>
         
         <div class="wallpaper-grid" id="wallpaperGrid">
-            <!-- 示例壁纸项目 -->
-            <div class="wallpaper-item">
-                <div class="wallpaper-img">🦋</div>
+            <!-- 手机壁纸 -->
+            <div class="wallpaper-item mobile-wallpaper">
+                <img src="https://raw.githubusercontent.com/cochyu/xiadie_fansite/main/blog_bg.png" alt="手机壁纸1" class="wallpaper-img">
+                <div class="wallpaper-info">
+                    <h4>遐蝶 - 手游专属</h4>
+                    <p>上传者：蝶语者</p>
+                    <div class="wallpaper-actions">
+                        <button class="like-btn" onclick="toggleLike(this)">
+                            <span class="like-count">156</span> ❤️
+                        </button>
+                        <button class="download-btn" onclick="downloadWallpaper('blog_bg.png')">
+                            下载 📥
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 桌面壁纸 -->
+            <div class="wallpaper-item desktop-wallpaper">
+                <img src="https://raw.githubusercontent.com/cochyu/xiadie_fansite/main/wp_bg.jpg" alt="桌面壁纸1" class="wallpaper-img">
                 <div class="wallpaper-info">
                     <h4>遐蝶 - 星穹之舞</h4>
                     <p>上传者：蝶舞天涯</p>
@@ -551,39 +580,39 @@
                         <button class="like-btn" onclick="toggleLike(this)">
                             <span class="like-count">128</span> ❤️
                         </button>
-                        <button class="download-btn" onclick="downloadWallpaper()">
+                        <button class="download-btn" onclick="downloadWallpaper('wp_bg.jpg')">
                             下载 📥
                         </button>
                     </div>
                 </div>
             </div>
             
-            <div class="wallpaper-item">
-                <div class="wallpaper-img">✨</div>
+            <div class="wallpaper-item desktop-wallpaper">
+                <img src="https://raw.githubusercontent.com/cochyu/xiadie_fansite/main/test_bg.jpg" alt="桌面壁纸2" class="wallpaper-img">
                 <div class="wallpaper-info">
-                    <h4>遐蝶 - 月下精灵</h4>
+                    <h4>遐蝶 - 测试之美</h4>
                     <p>上传者：星轨旅人</p>
                     <div class="wallpaper-actions">
                         <button class="like-btn" onclick="toggleLike(this)">
                             <span class="like-count">95</span> ❤️
                         </button>
-                        <button class="download-btn" onclick="downloadWallpaper()">
+                        <button class="download-btn" onclick="downloadWallpaper('test_bg.jpg')">
                             下载 📥
                         </button>
                     </div>
                 </div>
             </div>
             
-            <div class="wallpaper-item">
-                <div class="wallpaper-img">🌸</div>
+            <div class="wallpaper-item desktop-wallpaper">
+                <img src="https://raw.githubusercontent.com/cochyu/xiadie_fansite/main/main_bg.jpg" alt="桌面壁纸3" class="wallpaper-img">
                 <div class="wallpaper-info">
-                    <h4>遐蝶 - 花开时节</h4>
+                    <h4>遐蝶 - 主背景图</h4>
                     <p>上传者：樱花飘落</p>
                     <div class="wallpaper-actions">
                         <button class="like-btn" onclick="toggleLike(this)">
-                            <span class="like-count">76</span> ❤️
+                            <span class="like-count">203</span> ❤️
                         </button>
-                        <button class="download-btn" onclick="downloadWallpaper()">
+                        <button class="download-btn" onclick="downloadWallpaper('main_bg.jpg')">
                             下载 📥
                         </button>
                     </div>
@@ -729,17 +758,16 @@
 
     <script>
         // 音乐控制
-
         function toggleMusic() {
-          const audio = document.getElementById('bgm');
-          const ctrl = document.getElementById('musicControl');
-          if (audio.paused) {
-            audio.play();
-            ctrl.classList.add('playing');
-          } else {
-            audio.pause();
-            ctrl.classList.remove('playing');
-          }
+            const audio = document.getElementById('bgm');
+            const ctrl = document.getElementById('musicControl');
+            if (audio.paused) {
+                audio.play();
+                ctrl.classList.add('playing');
+            } else {
+                audio.pause();
+                ctrl.classList.remove('playing');
+            }
         }
 
         // 页面切换
@@ -764,8 +792,22 @@
             tabs.forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
             
-            // 这里可以加载不同类型的壁纸
-            console.log('切换到' + (type === 'mobile' ? '手机' : '桌面') + '壁纸');
+            const wallpapers = document.querySelectorAll('.wallpaper-item');
+            wallpapers.forEach(wallpaper => {
+                if (type === 'mobile') {
+                    if (wallpaper.classList.contains('mobile-wallpaper')) {
+                        wallpaper.style.display = 'block';
+                    } else {
+                        wallpaper.style.display = 'none';
+                    }
+                } else {
+                    if (wallpaper.classList.contains('desktop-wallpaper')) {
+                        wallpaper.style.display = 'block';
+                    } else {
+                        wallpaper.style.display = 'none';
+                    }
+                }
+            });
         }
 
         function toggleLike(button) {
@@ -775,8 +817,14 @@
             count.textContent = button.classList.contains('liked') ? currentCount + 1 : currentCount - 1;
         }
 
-        function downloadWallpaper() {
-            alert('壁纸下载功能已触发！\n（实际项目中这里会下载图片文件）');
+        function downloadWallpaper(filename) {
+            const link = document.createElement('a');
+            link.href = `https://raw.githubusercontent.com/cochyu/xiadie_fansite/main/${filename}`;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            alert(`正在下载 ${filename}...`);
         }
 
         function uploadWallpaper() {
@@ -1006,14 +1054,10 @@
 
         // 页面加载完成后的初始化
         window.onload = function() {
-            // 可以在这里添加一些初始化代码
+            // 初始显示手机壁纸
+            switchTab('mobile');
             console.log('遐蝶的温馨小窝已加载完成！');
         };
     </script>
 </body>
-
 </html>
-
-
-
-
